@@ -40,6 +40,75 @@ const featureCards = [
   },
 ];
 
+const showcaseRows = [
+  {
+    title: "Kitchen sink repair",
+    owner: "Amina Njoroge",
+    initials: "AN",
+    status: "Approved",
+    statusTone: "positive",
+    team: "Plumbing",
+    priority: "High",
+    priorityTone: "warning",
+    updated: "1 hr ago",
+  },
+  {
+    title: "Generator service",
+    owner: "Brian Odhiambo",
+    initials: "BO",
+    status: "Review",
+    statusTone: "warning",
+    team: "Field Ops",
+    priority: "Medium",
+    priorityTone: "neutral",
+    updated: "2 hrs ago",
+  },
+  {
+    title: "Office rewiring",
+    owner: "Faith Wanjiku",
+    initials: "FW",
+    status: "Locked",
+    statusTone: "neutral",
+    team: "Electrical",
+    priority: "High",
+    priorityTone: "warning",
+    updated: "Yesterday",
+  },
+  {
+    title: "Move-out cleaning",
+    owner: "Kevin Maina",
+    initials: "KM",
+    status: "Approved",
+    statusTone: "positive",
+    team: "Cleaning",
+    priority: "Low",
+    priorityTone: "positive",
+    updated: "4 hrs ago",
+  },
+  {
+    title: "Courier payout release",
+    owner: "Janet Atieno",
+    initials: "JA",
+    status: "Review",
+    statusTone: "warning",
+    team: "Operations",
+    priority: "Low",
+    priorityTone: "positive",
+    updated: "1 hr ago",
+  },
+  {
+    title: "Water tank cleaning",
+    owner: "Peter Mwangi",
+    initials: "PM",
+    status: "Locked",
+    statusTone: "neutral",
+    team: "Field Ops",
+    priority: "Medium",
+    priorityTone: "neutral",
+    updated: "2 hrs ago",
+  },
+];
+
 const trustCards = [
   {
     size: "large",
@@ -118,6 +187,26 @@ function CheckIcon() {
 }
 
 function FeatureIcon({ type }) {
+  if (type === "chart") {
+    return (
+      <svg aria-hidden="true" className="h-5 w-5" fill="none" viewBox="0 0 24 24">
+        <path
+          d="M4 18.5h16M7 15l3-3 2.5 2.5L17 9"
+          stroke="currentColor"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="1.8"
+        />
+        <path
+          d="M7 18.5v-3.5m5.5 3.5v-4m4.5 4V9"
+          stroke="currentColor"
+          strokeLinecap="round"
+          strokeWidth="1.8"
+        />
+      </svg>
+    );
+  }
+
   if (type === "shield") {
     return (
       <svg aria-hidden="true" className="h-5 w-5" fill="none" viewBox="0 0 24 24">
@@ -166,6 +255,12 @@ function PrimaryButton({ href, children, secondary = false }) {
     >
       {children}
     </a>
+  );
+}
+
+function ShowcaseBadge({ tone = "neutral", children }) {
+  return (
+    <span className={`showcase-badge showcase-badge--${tone}`}>{children}</span>
   );
 }
 
@@ -328,6 +423,84 @@ export default function App() {
               </article>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section id="showcase" className="bg-white px-4 pb-24 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-[1280px]">
+          <div className="mx-auto max-w-[760px] text-center">
+            <p className="text-sm font-medium uppercase tracking-[0.22em] text-[var(--emerald)]">
+              Operations view
+            </p>
+            <h2 className="mt-5 text-[clamp(2.4rem,5vw,4.4rem)] font-extrabold leading-[1.02] tracking-[-0.06em] text-[var(--ink)]">
+              One clean queue for funded jobs and releases.
+            </h2>
+            <p className="mt-6 text-base font-extralight leading-8 text-[var(--muted)]">
+              This section only needs one clear workspace: a simple list that
+              shows ownership, status, team, priority, and the latest activity
+              without piling on extra feature blocks.
+            </p>
+          </div>
+
+          <article
+            className="showcase-card reveal mx-auto mt-16 max-w-[1120px]"
+            style={{ "--delay": "0.08s" }}
+          >
+            <div className="max-w-[440px]">
+              <div className="feature-icon">
+                <FeatureIcon type="chart" />
+              </div>
+              <h3 className="mt-6 text-[1.95rem] font-bold leading-[1.02] tracking-[-0.05em] text-[var(--ink)]">
+                Job command queue
+              </h3>
+              <p className="mt-4 text-sm font-extralight leading-7 text-[var(--muted)]">
+                A single operating view for escrow-backed jobs moving from
+                locked funds to review and final payout.
+              </p>
+            </div>
+
+            <div className="showcase-table-shell mt-8">
+              <div className="showcase-table-row showcase-table-row--header">
+                <span>Job title</span>
+                <span>Owner</span>
+                <span>Status</span>
+                <span>Team</span>
+                <span>Priority</span>
+                <span>Last activity</span>
+              </div>
+
+              {showcaseRows.map((row) => (
+                <div key={row.title} className="showcase-table-row">
+                  <span data-label="Job title">
+                    <span className="showcase-title-cell">
+                      <span className="showcase-checkbox" />
+                      <span className="showcase-cell-title">{row.title}</span>
+                    </span>
+                  </span>
+                  <span data-label="Owner">
+                    <span className="showcase-owner-cell">
+                      <span className="showcase-owner-avatar">{row.initials}</span>
+                      <span className="showcase-cell-meta">{row.owner}</span>
+                    </span>
+                  </span>
+                  <span data-label="Status">
+                    <ShowcaseBadge tone={row.statusTone}>{row.status}</ShowcaseBadge>
+                  </span>
+                  <span className="showcase-cell-meta" data-label="Team">
+                    {row.team}
+                  </span>
+                  <span data-label="Priority">
+                    <ShowcaseBadge tone={row.priorityTone}>{row.priority}</ShowcaseBadge>
+                  </span>
+                  <span className="showcase-cell-meta" data-label="Last activity">
+                    {row.updated}
+                  </span>
+                </div>
+              ))}
+
+              <div aria-hidden="true" className="showcase-table-fade" />
+            </div>
+          </article>
         </div>
       </section>
 
