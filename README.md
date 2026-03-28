@@ -41,7 +41,55 @@ We’re building a web‑based escrow system using M‑Pesa STK Push and B2C. Cl
 | John Chiwai | M‑Pesa Integration |
 | Gavin Chesebe | Documentation & Presentation |
 
+
 ---
+kazipay/
+├── backend/                 # Django project
+│   ├── Kazi_Pay/            # Project settings
+│   │   ├── __init__.py
+│   │   ├── settings.py
+│   │   ├── urls.py
+│   │   └── wsgi.py
+│   ├── kazipay_app/         # Main app
+│   │   ├── migrations/
+│   │   ├── management/
+│   │   │   └── commands/
+│   │   │       └── auto_release.py   # Auto‑release cron
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── models.py
+│   │   ├── serializers.py
+│   │   ├── urls.py
+│   │   ├── views.py
+│   │   └── utils/
+│   │       ├── mpesa.py
+│   │       └── sms.py
+│   ├── requirements.txt
+│   ├── .env.example
+│   └── manage.py
+├── frontend/                # React + Vite
+│   ├── public/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   │   ├── PostJob.jsx
+│   │   │   ├── FindWork.jsx
+│   │   │   ├── ClientDashboard.jsx
+│   │   │   └── WorkerDashboard.jsx
+│   │   ├── services/
+│   │   │   └── api.js
+│   │   ├── App.jsx
+│   │   ├── main.jsx
+│   │   └── index.css
+│   ├── package.json
+│   ├── vite.config.js
+│   └── .env
+├── screenshots/             # (optional) for README
+├── .gitignore
+├── LICENSE
+└── README.md
+
 
 ## 🚧 Status
 
