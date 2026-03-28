@@ -89,8 +89,6 @@ kazipay/
 ├── .gitignore
 ├── LICENSE
 └── README.md
-
-
 ## 🚧 Status
 
 The project is being actively developed. This README will be updated with:
