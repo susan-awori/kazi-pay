@@ -272,8 +272,8 @@ function PrimaryButton({ href, children, secondary = false }) {
       href={href}
       className={
         secondary
-          ? "glass-button"
-          : "emerald-button"
+          ? "glass-button w-full sm:w-auto"
+          : "emerald-button w-full sm:w-auto"
       }
     >
       {children}
@@ -295,8 +295,8 @@ export default function App() {
       <section className="hero-shell">
         <AuroraBackdrop />
 
-        <header className="relative z-20 px-4 pt-8 sm:px-6 lg:px-8">
-          <div className="mx-auto flex max-w-[1280px] items-center justify-between gap-4 rounded-full border border-white/10 bg-white/5 px-5 py-3.5 backdrop-blur-xl sm:px-6">
+        <header className="relative z-20 px-4 pt-5 sm:px-6 sm:pt-8 lg:px-8">
+          <div className="mx-auto flex max-w-[1280px] items-center justify-between gap-4 rounded-[1.4rem] border border-white/10 bg-white/5 px-4 py-3 backdrop-blur-xl sm:rounded-full sm:px-6 sm:py-3.5">
             <LogoMark />
 
             <nav className="hidden items-center gap-8 lg:flex">
@@ -340,17 +340,24 @@ export default function App() {
                   {link.label}
                 </a>
               ))}
+
+              <div className="mt-1 grid gap-3 pt-2">
+                <PrimaryButton href="#about">Get Started</PrimaryButton>
+                <PrimaryButton href="#showcase" secondary>
+                  View operations
+                </PrimaryButton>
+              </div>
             </div>
           )}
         </header>
 
-        <div className="relative z-20 mx-auto flex min-h-[640px] max-w-[940px] flex-col items-center justify-center px-6 pb-20 pt-28 text-center lg:min-h-[700px] lg:pb-24 lg:pt-28">
+        <div className="relative z-20 mx-auto flex min-h-[560px] max-w-[940px] flex-col items-center justify-center px-4 pb-16 pt-20 text-center sm:px-6 sm:pb-20 sm:pt-24 lg:min-h-[700px] lg:pb-24 lg:pt-28">
           <span className="hero-pill reveal" style={{ "--delay": "0.05s" }}>
             M-Pesa escrow for everyday work
           </span>
 
           <h1
-            className="reveal mt-7 text-[clamp(3.2rem,7vw,6rem)] font-extrabold leading-[0.95] tracking-[-0.07em] text-white"
+            className="reveal mt-6 text-[clamp(2.7rem,10vw,6rem)] font-extrabold leading-[0.95] tracking-[-0.07em] text-white sm:mt-7"
             style={{ "--delay": "0.12s" }}
           >
             Secure the money before
@@ -359,7 +366,7 @@ export default function App() {
           </h1>
 
           <p
-            className="reveal mt-7 max-w-[660px] text-base font-extralight leading-8 text-white/70 sm:text-lg"
+            className="reveal mt-6 max-w-[660px] text-[0.98rem] font-light leading-7 text-white/90 sm:mt-7 sm:text-lg sm:leading-8"
             style={{ "--delay": "0.2s" }}
           >
             KaziPay gives clients and workers a calmer starting point: deposit
@@ -368,7 +375,7 @@ export default function App() {
           </p>
 
           <div
-            className="reveal mt-11 flex flex-col gap-4 sm:flex-row"
+            className="reveal mt-10 flex w-full max-w-[420px] flex-col gap-4 sm:mt-11 sm:max-w-none sm:flex-row sm:justify-center"
             style={{ "--delay": "0.28s" }}
           >
             <PrimaryButton href="#features">Explore features</PrimaryButton>
@@ -378,7 +385,7 @@ export default function App() {
           </div>
 
           <div
-            className="reveal mt-12 flex flex-wrap items-center justify-center gap-x-8 gap-y-4"
+            className="reveal mt-10 flex flex-wrap items-center justify-center gap-x-5 gap-y-4 sm:mt-12 sm:gap-x-8"
             style={{ "--delay": "0.36s" }}
           >
             {quickPoints.map((point) => (
@@ -408,7 +415,7 @@ export default function App() {
         </div>
       </section>
 
-      <section id="about" className="bg-white px-4 py-24 sm:px-6 lg:px-8">
+      <section id="about" className="bg-white px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
         <div className="mx-auto max-w-[1280px]">
           <div className="max-w-[695px]">
             <p className="text-sm font-medium uppercase tracking-[0.22em] text-[var(--emerald)]">
@@ -425,7 +432,7 @@ export default function App() {
             </p>
           </div>
 
-          <div id="features" className="mt-16 grid gap-6 lg:grid-cols-3">
+          <div id="features" className="mt-14 grid gap-6 sm:mt-16 lg:grid-cols-3">
             {featureCards.map((card, index) => (
               <article
                 key={card.title}
@@ -435,8 +442,8 @@ export default function App() {
                 <div className="feature-icon">
                   <FeatureIcon type={card.icon} />
                 </div>
-                <div className="mt-16">
-                  <h3 className="text-[1.55rem] font-bold tracking-[-0.04em] text-[var(--ink)]">
+                <div className="mt-10 sm:mt-16">
+                  <h3 className="text-[1.38rem] font-bold tracking-[-0.04em] text-[var(--ink)] sm:text-[1.55rem]">
                     {card.title}
                   </h3>
                   <p className="mt-4 text-sm font-extralight leading-8 text-[var(--muted)]">
@@ -449,7 +456,7 @@ export default function App() {
         </div>
       </section>
 
-      <section id="showcase" className="bg-white px-4 pb-24 sm:px-6 lg:px-8">
+      <section id="showcase" className="bg-white px-4 pb-20 sm:px-6 sm:pb-24 lg:px-8">
         <div className="mx-auto max-w-[1280px]">
           <div className="mx-auto max-w-[760px] text-center">
             <p className="text-sm font-medium uppercase tracking-[0.22em] text-[var(--emerald)]">
@@ -466,7 +473,7 @@ export default function App() {
           </div>
 
           <article
-            className="showcase-card reveal mx-auto mt-16 max-w-[1120px]"
+            className="showcase-card reveal mx-auto mt-14 max-w-[1120px] sm:mt-16"
             style={{ "--delay": "0.08s" }}
           >
             <div className="max-w-[440px]">
@@ -527,7 +534,7 @@ export default function App() {
         </div>
       </section>
 
-      <section id="trust" className="bg-[var(--paper)] px-4 py-24 sm:px-6 lg:px-8">
+      <section id="trust" className="bg-[var(--paper)] px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
         <div className="mx-auto max-w-[1280px]">
           <div className="mx-auto max-w-[695px] text-center">
             <p className="text-sm font-medium uppercase tracking-[0.22em] text-[var(--emerald)]">
@@ -543,7 +550,7 @@ export default function App() {
             </p>
           </div>
 
-          <div className="mt-16 grid gap-6 lg:grid-cols-6">
+          <div className="mt-14 grid gap-6 sm:mt-16 lg:grid-cols-6">
             {trustCards.map((card, index) => (
               <article
                 key={card.title}
@@ -555,7 +562,7 @@ export default function App() {
                 <p className="text-sm font-medium tracking-[-0.02em] text-black/35">
                   {card.eyebrow}
                 </p>
-                <div className="mt-12">
+                <div className="mt-10 sm:mt-12">
                   <h3 className="max-w-[560px] text-[1.6rem] font-bold leading-[1.12] tracking-[-0.04em] text-[var(--ink)]">
                     {card.title}
                   </h3>
@@ -569,7 +576,7 @@ export default function App() {
         </div>
       </section>
 
-      <footer id="footer" className="footer-shell px-4 pt-24 sm:px-6 lg:px-8">
+      <footer id="footer" className="footer-shell px-4 pt-20 sm:px-6 sm:pt-24 lg:px-8">
         <div aria-hidden="true" className="footer-backdrop" />
 
         <div className="relative z-10 mx-auto max-w-[1280px]">
@@ -596,10 +603,10 @@ export default function App() {
             </div>
           </div>
 
-          <div className="footer-divider mt-20" />
+          <div className="footer-divider mt-16 sm:mt-20" />
 
-          <div className="grid gap-14 py-14 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.85fr)_minmax(0,0.85fr)]">
-            <div className="max-w-[320px]">
+          <div className="grid gap-10 py-12 sm:gap-14 sm:py-14 md:grid-cols-2 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.85fr)_minmax(0,0.85fr)]">
+            <div className="max-w-[320px] md:col-span-2 lg:col-span-1">
               <LogoMark />
               <p className="mt-5 text-sm font-light leading-7 text-white/90">
                 Escrow-first payments for real work across Kenya&apos;s everyday
@@ -628,7 +635,7 @@ export default function App() {
               2026 KaziPay. Escrow-first payments for real work.
             </p>
 
-            <div className="flex items-center gap-3">
+            <div className="flex flex-wrap items-center gap-3">
               {footerSocials.map((social) => (
                 <span key={social} className="footer-social-pill">
                   {social}
