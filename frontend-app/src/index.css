@@ -1,0 +1,274 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ink: #0f1720;
+  --muted: #6d7782;
+  --paper: #f7f8f5;
+  --line: rgba(255, 255, 255, 0.12);
+  --emerald: #0ea45a;
+  --emerald-deep: #067d43;
+  --hero: #041109;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #ffffff;
+  color: var(--ink);
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.hero-shell {
+  position: relative;
+  min-height: 920px;
+  overflow: hidden;
+  background: var(--hero);
+}
+
+.aurora {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(14, 164, 90, 0.12), transparent 20%),
+    linear-gradient(180deg, #05150c 0%, #07120c 52%, #08110d 100%);
+}
+
+.aurora__layer,
+.aurora__grid,
+.aurora__veil {
+  position: absolute;
+  inset: 0;
+}
+
+.aurora__layer {
+  filter: blur(72px);
+  mix-blend-mode: screen;
+  opacity: 0.9;
+}
+
+.aurora__layer--one {
+  background:
+    radial-gradient(circle at 22% 24%, rgba(18, 255, 138, 0.58), transparent 22%),
+    radial-gradient(circle at 45% 30%, rgba(9, 204, 152, 0.24), transparent 18%);
+  animation: auroraFloatOne 16s ease-in-out infinite alternate;
+}
+
+.aurora__layer--two {
+  background:
+    radial-gradient(circle at 78% 14%, rgba(64, 255, 213, 0.32), transparent 18%),
+    radial-gradient(circle at 62% 34%, rgba(31, 128, 255, 0.2), transparent 20%);
+  animation: auroraFloatTwo 18s ease-in-out infinite alternate;
+}
+
+.aurora__layer--three {
+  background:
+    radial-gradient(circle at 50% 72%, rgba(12, 170, 98, 0.28), transparent 16%),
+    radial-gradient(circle at 84% 54%, rgba(22, 242, 181, 0.18), transparent 18%);
+  animation: auroraFloatThree 20s ease-in-out infinite alternate;
+}
+
+.aurora__grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent 82%);
+}
+
+.aurora__veil {
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(3, 10, 6, 0.62)),
+    radial-gradient(circle at 50% 22%, rgba(255, 255, 255, 0.08), transparent 44%);
+}
+
+.brand-chip {
+  display: grid;
+  height: 2.5rem;
+  width: 2.5rem;
+  place-items: center;
+  border-radius: 0.85rem;
+  background: linear-gradient(180deg, var(--emerald), var(--emerald-deep));
+  box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.22), 0 16px 40px rgba(5, 170, 95, 0.22);
+}
+
+.brand-chip span {
+  height: 1rem;
+  width: 1rem;
+  border-radius: 999px;
+  border: 3px solid white;
+  transform: translate(3px, 3px);
+}
+
+.hero-pill,
+.sector-pill {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--line);
+  backdrop-filter: blur(18px);
+}
+
+.hero-pill {
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.72rem 1.05rem;
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.94);
+}
+
+.sector-pill {
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0.9rem 1.05rem;
+  font-size: 0.88rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.emerald-button,
+.glass-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.75rem;
+  padding: 0.95rem 1.28rem;
+  font-size: 0.95rem;
+  transition: transform 300ms ease, border-color 300ms ease, background 300ms ease,
+    box-shadow 300ms ease;
+}
+
+.emerald-button {
+  background: linear-gradient(180deg, var(--emerald), var(--emerald-deep));
+  color: white;
+  box-shadow: 0 18px 40px rgba(6, 125, 67, 0.24);
+}
+
+.glass-button {
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.06);
+  color: white;
+  backdrop-filter: blur(18px);
+}
+
+.emerald-button:hover,
+.glass-button:hover,
+.feature-card-light:hover,
+.trust-card:hover,
+.sector-pill:hover {
+  transform: translateY(-4px);
+}
+
+.feature-card-light,
+.trust-card {
+  border: 1px solid rgba(15, 23, 32, 0.08);
+  background: white;
+  box-shadow: 0 18px 50px rgba(15, 23, 32, 0.04);
+}
+
+.feature-card-light {
+  min-height: 268px;
+  border-radius: 1rem;
+  padding: 1.75rem;
+  transition: transform 300ms ease, box-shadow 300ms ease;
+}
+
+.feature-icon {
+  display: grid;
+  height: 2.25rem;
+  width: 2.25rem;
+  place-items: center;
+  border-radius: 0.6rem;
+  background: linear-gradient(180deg, #ffffff, #f1f1f1);
+  border: 1px solid rgba(15, 23, 32, 0.08);
+  color: var(--emerald);
+}
+
+.trust-card {
+  min-height: 332px;
+  border-radius: 1rem;
+  padding: 1.75rem;
+  transition: transform 300ms ease, box-shadow 300ms ease;
+}
+
+.trust-card:nth-child(n + 3) {
+  min-height: 352px;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: reveal 850ms var(--delay, 0s) cubic-bezier(0.2, 0.9, 0.2, 1) forwards;
+}
+
+@keyframes reveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes auroraFloatOne {
+  from {
+    transform: translate3d(-2%, -2%, 0) scale(1);
+  }
+  to {
+    transform: translate3d(3%, 3%, 0) scale(1.06);
+  }
+}
+
+@keyframes auroraFloatTwo {
+  from {
+    transform: translate3d(2%, 0%, 0) scale(1);
+  }
+  to {
+    transform: translate3d(-3%, 2%, 0) scale(1.08);
+  }
+}
+
+@keyframes auroraFloatThree {
+  from {
+    transform: translate3d(0%, 2%, 0) scale(1);
+  }
+  to {
+    transform: translate3d(2%, -3%, 0) scale(1.05);
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero-shell {
+    min-height: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
