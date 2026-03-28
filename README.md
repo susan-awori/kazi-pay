@@ -61,7 +61,7 @@ We’re building a web‑based escrow system using M‑Pesa STK Push and B2C. Cl
 | John Chiwai | M‑Pesa Integration |
 | Gavin Chesebe | Documentation & Presentation |
 
-
+## 🏗️ **Project Structure**
 ```text
 kazipay/
 ├── backend/                 # Django project
