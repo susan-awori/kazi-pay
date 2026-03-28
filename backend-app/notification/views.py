@@ -6,8 +6,9 @@ from rest_framework.response import Response
 
 from .models import Notification
 from .serializers import NotificationSerializer
-from authApp.models import CustomUser  # Ensure this path is correct
+from authApp.models import CustomUser 
 
+# --- 1. TEAMMATE'S VIEWSET (API) ---
 class NotificationViewSet(viewsets.ReadOnlyModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = NotificationSerializer
@@ -22,60 +23,79 @@ class NotificationViewSet(viewsets.ReadOnlyModelViewSet):
         notif.save()
         return Response({"status": "read"})
 
-#  AFRICA'S TALKING (USSD/SMS) 
+# --- 2. AFRICA'S TALKING WEBHOOKS (USSD/SMS) ---
+from .utils import send_kazi_sms # Assuming your SMS logic is here
 
 @csrf_exempt
 def ussd_callback(request):
-    """
-    Handles the USSD logic for *384*23550#
-    """
     if request.method == 'POST':
-        session_id = request.POST.get("sessionId")
-        service_code = request.POST.get("serviceCode")
         phone_number = request.POST.get("phoneNumber")
         text = request.POST.get("text", "")
-
+        
+        # 1. Quick identification
+        user = CustomUser.objects.filter(phone_number=phone_number).first()
+        
+        input_parts = text.split('*')
+        level = 0 if text == "" else len(input_parts)
         response = ""
 
-        # Main Menu
-        if text == "":
-            try:
-                # Try to find user by phone number
-                user = CustomUser.objects.get(phone_number=phone_number)
-                response = f"CON Welcome {user.username} to Kazi-Pay\n"
-                response += "1. Search for Jobs\n"
-                response += "2. Check Escrow Balance\n"
-                response += "3. My Active Jobs"
-            except CustomUser.DoesNotExist:
-                response = "CON Welcome to Kazi-Pay\n"
-                response += "1. Register as Worker\n"
-                response += "2. Register as Client\n"
-                response += "3. About Us"
-
-        # Logic for "Search for Jobs" or "Register as Worker"
-        elif text == "1":
-            response = "CON Select Category:\n1. Plumbing\n2. Electrical\n3. Cleaning"
+        # --- NEW USER PATHWAY ---
+        if not user:
+            if level == 0:
+                response = "CON Welcome to KaziPesa\n1. Register as Worker\n2. Register as Client\n3. Info"
             
-        elif text == "1*1":
-            response = "END Looking for Plumbing jobs near you. We will SMS you when one is found!"
+            elif level == 1:
+                choice = input_parts[0]
+                if choice in ["1", "2"]:
+                    role = "Worker" if choice == "1" else "Client"
+                    response = f"CON Registering as {role}\nPlease enter your Full Name:"
+                else:
+                    response = "END KaziPesa secures payments using M-Pesa. No pay, no work. No work, no pay."
+            
+            elif level == 2:
+                # The user just typed their name
+                choice_path = input_parts[0]
+                full_name = input_parts[1]
+                role = "WORKER" if choice_path == "1" else "CLIENT"
+                
+                try:
+                    # Create the user instantly
+                    new_user = CustomUser.objects.create(
+                        username=full_name.replace(" ", "_").lower(),
+                        phone_number=phone_number,
+                        role=role
+                    )
+                    
+                    # SEND SMS CONFIRMATION
+                    sms_msg = f"Welcome {full_name} to KaziPesa! You are registered as a {role}. Dial *384*23550# anytime to use our service."
+                    send_kazi_sms(phone_number, sms_msg)
+                    
+                    response = f"END Hongera {full_name}!\nYou are registered. We've sent you a confirmation SMS. Dial again to start."
+                except Exception as e:
+                    response = "END Sorry, registration failed. Please try again."
 
-        # Logic for Balance
-        elif text == "2":
-            response = "END Your Kazi-Pay Escrow balance is KES 0.00"
-
+        # --- EXISTING USER PATHWAY ---
         else:
-            response = "END Invalid option. Please try again."
-
+            if level == 0:
+                if user.role == 'CLIENT':
+                    response = f"CON KaziPesa Client: {user.username}\n1. Post a Job (Escrow)\n2. My Active Jobs\n3. Check Balance"
+                else:
+                    response = f"CON KaziPesa Worker: {user.username}\n1. Browse Jobs\n2. My Tasks\n3. Withdraw"
+            
+            # Additional levels for Existing Users...
+            elif level == 1:
+                if user.role == 'CLIENT' and input_parts[0] == "1":
+                    response = "CON Describe the job (e.g. Electrician):"
+                else:
+                    response = "END Coming soon!"
+                    
         return HttpResponse(response, content_type='text/plain')
-    
-    return HttpResponse("USSD Endpoint", status=400)
-
+        
 @csrf_exempt
 def sms_callback(request):
     """
-    Handles inbound SMS sent to shortcode 23440
+    Handles inbound SMS from Africa's Talking
     """
     if request.method == 'POST':
-        # logic for processing incoming SMS
         return HttpResponse("OK", status=200)
     return HttpResponse("Method not allowed", status=405)

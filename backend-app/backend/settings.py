@@ -12,7 +12,7 @@ SECRET_KEY = config("SECRET_KEY", default="your_secret_key_here")
 DEBUG = config("DEBUG", default=True, cast=bool)
 
 # FIX: Added .ngrok-free.app so Africa's Talking can connect to your local server
-ALLOWED_HOSTS = config("ALLOWED_HOSTS", default="127.0.0.1,localhost,.ngrok-free.app").split(",")
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", ".ngrok-free.app", "d239-105-163-1-8.ngrok-free.app"]
 
 # --- APPLICATION DEFINITION ---
 DJANGO_APPS = [
@@ -175,3 +175,12 @@ ACCOUNT_LOGIN_METHODS = ["username"]
 ACCOUNT_EMAIL_VERIFICATION = "none"
 ACCOUNT_CONFIRM_EMAIL_ON_GET = False
 ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
+
+# --- CSRF CONFIGURATION ---
+# This allows Africa's Talking to send POST requests to your Ngrok URL
+CSRF_TRUSTED_ORIGINS = [
+    "https://d239-105-163-1-8.ngrok-free.app",
+    "http://d239-105-163-1-8.ngrok-free.app",
+]
+
+APPEND_SLASH = False
