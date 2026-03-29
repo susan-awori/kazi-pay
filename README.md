@@ -17,6 +17,16 @@ Kenya’s informal workers (5M+) face a two‑sided trust gap: workers fear non�
 
 We’re building a web‑based escrow system using M‑Pesa STK Push and B2C. Clients deposit funds, workers accept jobs, and payment is released only after client confirmation.
 
+Authentication & Roles
+
+- Users register/login with **phone number (OTP)** or **email/password**.
+- JWT tokens secure all API requests.
+- Roles: `client`, `worker`, or `both`.
+
+**Test accounts** (use in the live demo):
+- Client: `254711000001` (phone) / `SecureK@zi99!` / `client`
+- Worker: `254711000002` (phone) / `SecureK@zi99!` / `worker`
+
 
 
 ##  Tech Stack (Planned)
