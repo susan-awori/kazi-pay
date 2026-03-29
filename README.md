@@ -211,16 +211,14 @@ kazipay/
 └── README.md
 
 ```
-##  Status
+ Setup & Installation
 
-The project is being actively developed. This README will be updated with:
+### Prerequisites
+- Python 3.10+, Node.js 16+
+- PostgreSQL (local or cloud)
+- Safaricom Daraja sandbox credentials
+- Africa’s Talking sandbox credentials
 
-- Screenshots of key features
-- Live demo link
-- Setup instructions
-- Full documentation
-
-Stay tuned!
 
 
 
