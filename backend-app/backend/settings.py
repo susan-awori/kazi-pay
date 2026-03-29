@@ -67,6 +67,11 @@ MIDDLEWARE = [
 
 SITE_ID = 1
 ROOT_URLCONF = "backend.urls"
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "https://example.com",
+    "https://kazi-pay-five.vercel.app",
+]
 
 TEMPLATES = [
     {
