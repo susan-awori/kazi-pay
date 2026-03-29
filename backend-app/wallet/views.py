@@ -17,9 +17,9 @@ class WalletViewSet(viewsets.ReadOnlyModelViewSet):
         amount = request.data.get('amount')
         try:
             
-            MpesaB2C.pay_worker(
-                phone=request.user.phone_number, 
-                amount=amount, 
+            MpesaB2C().pay_worker(
+                phone=request.user.phone_number,
+                amount=amount,
                 remark="Withdrawal to M-Pesa"
             )
             

@@ -14,8 +14,10 @@ class JobService:
             raise ValidationError("This job is no longer accepting bids.")
         
         # 1. Update Job
+        from workers.models import WorkerProfile
+        worker_profile, _ = WorkerProfile.objects.get_or_create(user=bid.worker)
         job.status = 'in_progress'
-        job.assigned_worker = bid.worker
+        job.assigned_worker = worker_profile
         job.save()
         
         # 2. Mark this bid as accepted

@@ -38,7 +38,7 @@ class WorkerService:
         Logic for a worker to signal that they have finished the work.
         This changes the job status so the client can approve/release escrow.
         """
-        if job.assigned_worker != worker:
+        if job.assigned_worker is None or job.assigned_worker.user != worker:
             raise ValidationError("You are not the assigned worker for this job.")
         
         if job.status != 'in_progress':

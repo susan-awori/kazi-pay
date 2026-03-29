@@ -11,7 +11,7 @@ class MpesaB2C(DarajaClient):
             "InitiatorName": settings.MPESA_INITIATOR_NAME,
             "SecurityCredential": settings.MPESA_SECURITY_CREDENTIAL,
             "CommandID": "BusinessPayment",
-            "Amount": int(amount),
+            "Amount": int(float(amount)),
             "PartyA": settings.MPESA_SHORTCODE,
             "PartyB": phone,
             "Remarks": remark,
