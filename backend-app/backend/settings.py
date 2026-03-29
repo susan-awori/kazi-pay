@@ -12,7 +12,7 @@ SECRET_KEY = config("SECRET_KEY", default="your_secret_key_here")
 DEBUG = config("DEBUG", default=True, cast=bool)
 
 # FIX: Added .ngrok-free.app so Africa's Talking can connect to your local server
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", ".ngrok-free.app", "d239-105-163-1-8.ngrok-free.app"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", ".ngrok-free.app", "cordie-unladen-lena.ngrok-free.dev"]
 
 # --- APPLICATION DEFINITION ---
 DJANGO_APPS = [
@@ -169,6 +169,8 @@ MPESA_SHORTCODE = config("MPESA_SHORTCODE", default="")
 MPESA_PASSKEY = config("MPESA_PASSKEY", default="")
 MPESA_INITIATOR_NAME = config("MPESA_INITIATOR_NAME", default="")
 MPESA_SECURITY_CREDENTIAL = config("MPESA_SECURITY_CREDENTIAL", default="")
+MPESA_C2B_CALLBACK_URL = config("MPESA_C2B_CALLBACK_URL", default="")
+MPESA_B2C_CALLBACK_URL = config("MPESA_B2C_CALLBACK_URL", default="")
 
 # --- ALLAUTH ADDITIONAL CONFIG ---
 ACCOUNT_LOGIN_METHODS = ["username"]
@@ -179,8 +181,8 @@ ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
 # --- CSRF CONFIGURATION ---
 # This allows Africa's Talking to send POST requests to your Ngrok URL
 CSRF_TRUSTED_ORIGINS = [
-    "https://d239-105-163-1-8.ngrok-free.app",
-    "http://d239-105-163-1-8.ngrok-free.app",
+    "https://cordie-unladen-lena.ngrok-free.dev",
+    "http://cordie-unladen-lena.ngrok-free.dev",
 ]
 
 APPEND_SLASH = False
