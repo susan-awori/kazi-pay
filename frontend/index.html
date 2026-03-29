@@ -1,18 +1,49 @@
 <!doctype html>
 <html>
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kazi Pay</title>
     <link rel="stylesheet" href="style.css" />
+    <style>
+      .page-section {
+        padding: 40px 20px;
+        border-bottom: 1px solid #eee;
+      }
+      .page-section h2 {
+        margin-top: 0;
+      }
+      .section-grid {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+      .hidden {
+        display: none !important;
+      }
+      .sub-nav {
+        margin: 8px 0;
+      }
+      .sub-nav a {
+        margin-right: 12px;
+        color: #065fd4;
+        text-decoration: none;
+      }
+      .sub-nav a:hover {
+        text-decoration: underline;
+      }
+    </style>
   </head>
   <body>
     <header class="site-header">
-      <div class="brand">
-        <h1>Kazi Pay</h1>
-      </div>
+      <div class="brand"><h1>Kazi Pay</h1></div>
       <nav class="top-nav">
         <ul>
-          <li><a href="#help">Help</a></li>
-          <li><a href="#whykazipesa">Why Kazi Pesa</a></li>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#market">Market</a></li>
+          <li><a href="#jobs">Jobs</a></li>
+          <li><a href="#dashboard">Dashboard</a></li>
         </ul>
       </nav>
       <div class="search-con">
@@ -33,7 +64,7 @@
       </div>
     </header>
 
-    <section class="hero">
+    <section id="home" class="hero page-section">
       <div class="hero-body">
         <div class="hero-text">
           <h1>Secure Payments for Work & Deliveries</h1>
@@ -43,10 +74,8 @@
             and dispute protection.
           </p>
           <div class="hero-buttons">
-            <a class="btn primary-btn" href="services.html">Get Started</a>
-            <a class="btn secondary-btn" href="marketplace.html"
-              >Explore Marketplace</a
-            >
+            <a class="btn primary-btn" href="#services">Get Started</a>
+            <a class="btn secondary-btn" href="#market">Explore Marketplace</a>
           </div>
         </div>
         <div class="hero-visual">
@@ -56,8 +85,7 @@
           />
         </div>
       </div>
-
-      <div class="hero-features">
+      <div class="hero-features section-grid">
         <article class="feature-card">
           <h3>Instant Settlements</h3>
           <p>
@@ -78,9 +106,81 @@
       </div>
     </section>
 
-    <section class="main-actions">
-      <a href="services.html"><button>Freelance Services</button></a>
-      <a href="marketplace.html"><button>Buy & Sell Products</button></a>
+    <section id="services" class="page-section">
+      <h2>Freelance Services</h2>
+      <div class="sub-nav">
+        <a href="#post-job">Post a Job</a>
+        <a href="#jobs">Find Work</a>
+      </div>
+      <p>
+        Publish job listings, manage proposals, and hire trusted freelancers
+        safely through escrow to ensure successful delivery.
+      </p>
     </section>
+
+    <section id="market" class="page-section">
+      <h2>Marketplace</h2>
+      <p>
+        Browse, sell, and buy verified products. Escrow payments protect both
+        buyers and sellers until delivery is confirmed.
+      </p>
+      <div class="sub-nav">
+        <a href="#product-details">View Product Details</a>
+        <a href="#payment">Secure Payment</a>
+      </div>
+      <div id="marketList">
+        Marketplace listings will appear here (JavaScript data binding in
+        production).
+      </div>
+    </section>
+
+    <section id="jobs" class="page-section">
+      <h2>Available Jobs</h2>
+      <div id="jobList">
+        No open jobs yet. Use the post form below to create one.
+      </div>
+    </section>
+
+    <section id="post-job" class="page-section">
+      <h2>Post a Job</h2>
+      <form id="jobForm">
+        <input type="text" id="title" placeholder="Job Title" required />
+        <textarea id="desc" placeholder="Description" required></textarea>
+        <input type="number" id="price" placeholder="Price" required />
+        <button type="submit">Post Job</button>
+      </form>
+    </section>
+
+    <section id="product-details" class="page-section">
+      <h2>Product Details</h2>
+      <div id="productDetails">Select a product to see full details.</div>
+      <button id="buyPayBtn" class="btn primary-btn">Buy & Pay (Escrow)</button>
+    </section>
+
+    <section id="payment" class="page-section">
+      <h2>Secure Payment</h2>
+      <p>Amount: Ksh <span id="amount">0</span></p>
+      <button id="payNowBtn" class="btn primary-btn">Pay Now</button>
+      <p id="status"></p>
+    </section>
+
+    <section id="dashboard" class="page-section">
+      <h2>Dashboard</h2>
+      <div class="section-grid">
+        <article>
+          <h3>My Jobs</h3>
+          <div id="jobs">No jobs yet</div>
+        </article>
+        <article>
+          <h3>My Orders</h3>
+          <div id="orders">No orders yet</div>
+        </article>
+      </div>
+      <button id="confirmDelivery" class="btn secondary-btn">
+        Confirm Delivery
+      </button>
+    </section>
+
+    <script src="script.js"></script>
   </body>
 </html>
