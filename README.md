@@ -88,23 +88,16 @@ kazipay/
 │   ├── requirements.txt
 │   ├── .env.example
 │   └── manage.py
-├── frontend/                # React + Vite
-│   ├── public/
+├── frontend-app/            # React + Vite landing app
 │   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   │   ├── PostJob.jsx
-│   │   │   ├── FindWork.jsx
-│   │   │   ├── ClientDashboard.jsx
-│   │   │   └── WorkerDashboard.jsx
-│   │   ├── services/
-│   │   │   └── api.js
 │   │   ├── App.jsx
-│   │   ├── main.jsx
-│   │   └── index.css
+│   │   ├── index.css
+│   │   └── main.jsx
+│   ├── index.html
 │   ├── package.json
-│   ├── vite.config.js
-│   └── .env
+│   ├── postcss.config.js
+│   ├── tailwind.config.js
+│   └── vite.config.js
 ├── screenshots/             # (optional) for README
 ├── .gitignore
 ├── LICENSE
