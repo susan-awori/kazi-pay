@@ -131,12 +131,240 @@ header button {
   margin-right: auto;
 }
 
-.feature-card {
+.page-section {
+  padding: 60px 30px;
+  border-bottom: 1px solid #d9e7db;
+  background: linear-gradient(180deg, #f7fbf8, #ffffff);
+  box-shadow: inset 0 1px 0 #eef4ef;
+}
+
+.page-section:nth-child(even) {
+  background: linear-gradient(180deg, #f2f8f5, #ffffff);
+}
+
+.page-section h2 {
+  margin-top: 0;
+  color: #0f4129;
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+}
+
+.page-section p {
+  color: #253b30;
+  max-width: 800px;
+  line-height: 1.7;
+  font-size: 1.05rem;
+  margin-bottom: 18px;
+}
+
+.sub-nav {
+  margin: 14px 0 24px;
+}
+
+.sub-nav a {
+  margin-right: 10px;
+  color: #276a45;
+  text-decoration: none;
+  font-weight: 600;
+  border: 1px solid #bbd8c5;
+  background: #ebf8f0;
+  padding: 6px 12px;
+  border-radius: 8px;
+}
+
+.sub-nav a:hover {
+  background: #d7f0e0;
+}
+
+#jobList,
+#marketList,
+#productDetails,
+#jobs,
+#orders {
+  background: linear-gradient(135deg, #ffffff, #effaf0);
+  border: 1px solid #c8dbcc;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 10px 22px rgba(16, 68, 33, 0.08);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+#jobList:hover,
+#marketList:hover,
+#productDetails:hover,
+#jobs:hover,
+#orders:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(16, 68, 33, 0.14);
+}
+
+#jobForm {
+  display: grid;
+  gap: 12px;
+  max-width: 500px;
+}
+
+#jobForm input,
+#jobForm textarea,
+#jobForm button,
+#payNowBtn,
+#buyPayBtn,
+#confirmDelivery {
+  transition: 0.2s ease;
+}
+
+input,
+textarea {
+  font-family: inherit;
+  font-size: 1rem;
+  border: 1px solid #bcd6c3;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #2b6b2b;
+  box-shadow: 0 0 0 3px rgba(43, 107, 43, 0.15);
+}
+
+.section-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.feature-card h3 {
+  margin: 0 0 8px;
+  color: #003a00;
+  font-size: 1.08rem;
+}
+
+.feature-card p {
+  margin: 0;
+  color: #4b5c4b;
+  font-size: 0.95rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 11px 18px;
+  border-radius: 28px;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+@media (max-width: 920px) {
+  .hero-body {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero-visual {
+    order: -1;
+  }
+
+  .hero-features {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-text p {
+    margin: 12px auto 20px;
+  }
+
+  header {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .top-nav ul {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .search-con input[type="search"] {
+    width: 120px;
+  }
+}
+
+/* BUTTONS */
+button {
+  padding: 10px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  background: #ff8c00;
+  color: white;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #d4af37;
+  color: #002a00;
+}
+
+/* SECONDARY BUTTON */
+.secondary-btn {
+  background: #002a00;
+  color: white;
+}
+
+.secondary-btn:hover {
+  background: #d4af37;
+}
+
+/* SEARCH BAR */
+.search-con {
+  margin: 0 20px;
+}
+
+.search-con form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   background: #fff;
-  border: 1px solid #d8e9d6;
-  border-radius: 10px;
-  padding: 16px;
-  box-shadow: 0 7px 13px rgba(46, 96, 58, 0.08);
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid #c8d8c8;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.search-con input[type="search"] {
+  border: none;
+  outline: none;
+  width: 210px;
+  font-size: 0.95rem;
+  color: #222;
+  background: transparent;
+}
+
+.search-con input[type="search"]::placeholder {
+  color: #8f9b8f;
+}
+
+.search-icon {
+  color: #2b6b2b;
+  font-size: 1rem;
+}
+
+.search-con button {
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid #2b6b2b;
+  background: #2b6b2b;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.search-con button:hover {
+  background: #1f4f1f;
+  border-color: #1f4f1f;
 }
 
 .feature-card h3 {
