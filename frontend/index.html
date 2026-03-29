@@ -43,7 +43,7 @@
             <span class="logo-text">Kazi Pay</span>
           </a>
           <ul class="nav-links">
-            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="index.html" class="active">Home</a></li>
             <li><a href="service.html">Services</a></li>
             <li><a href="market.html">Market</a></li>
             <li><a href="dashboard.html">Dashboard</a></li>
@@ -68,7 +68,7 @@
       </div>
     </header>
 
-    <section id="home" class="hero page-section">
+    <section class="hero">
       <div class="hero-body">
         <div class="hero-text">
           <h1>Secure Payments for Work & Deliveries</h1>
@@ -78,8 +78,10 @@
             and dispute protection.
           </p>
           <div class="hero-buttons">
-            <a class="btn primary-btn" href="#services">Get Started</a>
-            <a class="btn secondary-btn" href="#market">Explore Marketplace</a>
+            <a class="btn primary-btn" href="service.html">Get Started</a>
+            <a class="btn secondary-btn" href="market.html"
+              >Explore Marketplace</a
+            >
           </div>
         </div>
         <div class="hero-visual">
@@ -89,6 +91,7 @@
           />
         </div>
       </div>
+
       <div class="hero-features">
         <article class="feature-card">
           <h3>Instant Settlements</h3>
@@ -110,65 +113,13 @@
       </div>
     </section>
 
-    <section id="services" class="page-section">
-      <h2>Freelance Services</h2>
-      <div class="sub-nav">
-        <a href="#post-job">Post a Job</a>
-        <a href="#jobs">Find Work</a>
-      </div>
-      <p>
-        Publish job listings, manage proposals, and hire trusted freelancers
-        safely through escrow to ensure successful delivery.
-      </p>
+    <section class="main-actions">
+      <a href="service.html"><button>Freelance Services</button></a>
+      <a href="market.html"><button>Buy & Sell Products</button></a>
     </section>
 
-    <section id="market" class="page-section">
-      <h2>Marketplace</h2>
-      <p>
-        Browse, sell, and buy verified products. Escrow payments protect both
-        buyers and sellers until delivery is confirmed.
-      </p>
-      <div class="sub-nav">
-        <a href="#product-details">View Product Details</a>
-        <a href="#payment">Secure Payment</a>
-      </div>
-      <div id="marketList">
-        Marketplace listings will appear here (JavaScript data binding in
-        production).
-      </div>
-      <div id="productList"></div>
-    </section>
-
-    <section id="jobs" class="page-section">
-      <h2>Available Jobs</h2>
-      <div id="jobList">
-        No open jobs yet. Use the post form below to create one.
-      </div>
-    </section>
-
-    <section id="post-job" class="page-section">
-      <h2>Post a Job</h2>
-      <form id="jobForm">
-        <input type="text" id="title" placeholder="Job Title" required />
-        <textarea id="desc" placeholder="Description" required></textarea>
-        <input type="number" id="price" placeholder="Price" required />
-        <button type="submit">Post Job</button>
-      </form>
-    </section>
-
-    <section id="product-details" class="page-section">
-      <h2>Product Details</h2>
-      <div id="productDetails">Select a product to see full details.</div>
-      <button id="buyPayBtn" class="btn primary-btn">Buy & Pay (Escrow)</button>
-    </section>
-
-    <section id="payment" class="page-section">
-      <h2>Secure Payment</h2>
-      <p>Amount: Ksh <span id="amount">0</span></p>
-      <button id="payNowBtn" class="btn primary-btn">Pay Now</button>
-      <p id="status"></p>
-    </section>
-
-    <script src="script.js"></script>
+    <footer class="copyright-footer">
+      <p>&copy; 2026 Kazi Pay. All rights reserved.</p>
+    </footer>
   </body>
 </html>

@@ -43,6 +43,25 @@ body {
   min-height: 100vh;
   font-size: 15px;
   line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+copyright-footer,
+.copyright-footer,
+.site-footer {
+  width: 100%;
+  text-align: center;
+  padding: 14px 18px;
+  margin-top: 24px;
+  background: var(--white);
+  color: var(--grey-400);
+  border-top: 1px solid var(--grey-200);
+  font-size: 13px;
 }
 
 /* ── Nav ── */
@@ -635,6 +654,21 @@ tbody td:first-child {
   background: var(--gold);
   animation: pulse 2s infinite;
 }
+
+.copyright-footer {
+  text-align: center;
+  padding: 20px 0;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  background-color: #002a00;
+  color: #ececea;
+  border-top: 1px solid #eee;
+}
+
+.copyright-footer p {
+  margin: 0;
+}
+
 @keyframes pulse {
   0%,
   100% {

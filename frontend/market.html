@@ -68,6 +68,24 @@
         font-size: 15px;
         line-height: 1.6;
         overflow-x: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+
+      main {
+        flex: 1;
+      }
+
+      .site-footer,
+      .copyright-footer {
+        width: 100%;
+        text-align: center;
+        padding: 14px 18px;
+        margin-top: 24px;
+        background-color: #002a00;
+        color: #ececea;
+        border-top: 1px solid #eee;
+        font-size: 13px;
       }
 
       /*  NAVIGATION */
@@ -1667,14 +1685,14 @@
     <!--  NAVIGATION -->
     <nav>
       <div class="nav-inner">
-        <a class="logo" href="#">
+        <a class="logo" href="index.html">
           <div class="logo-mark">K</div>
           <span class="logo-text">Kazi pay</span>
         </a>
         <ul class="nav-links">
           <li><a href="index.html">Home</a></li>
           <li><a href="service.html">Services</a></li>
-          <li><a href="market.html" class="active">Marketplace</a></li>
+          <li><a href="market.html" class="active">Market</a></li>
           <li><a href="dashboard.html">Dashboard</a></li>
         </ul>
         <div class="nav-right">
@@ -2020,6 +2038,10 @@
         </div>
       </div>
     </div>
+
+    <footer class="site-footer">
+      <p>&copy; 2026 Kazi Pay. All rights reserved.</p>
+    </footer>
 
     <!--  TOAST -->
     <div id="toast"></div>
@@ -2497,7 +2519,7 @@
         $("order-modal-body").innerHTML = `
       <div class="order-summary-item">
         <div class="order-item-img">
-          <img src="${p.image || '../assets/istockphoto-2249457023-612x612.webp'}" alt="${p.name}" loading="lazy" onerror="this.onerror=null; this.src='../assets/istockphoto-2249457023-612x612.webp';" />
+          <img src="${p.image || "../assets/istockphoto-2249457023-612x612.webp"}" alt="${p.name}" loading="lazy" onerror="this.onerror=null; this.src='../assets/istockphoto-2249457023-612x612.webp';" />
         </div>
         <div class="order-item-info">
           <div class="order-item-name">${p.name}</div>
@@ -2643,7 +2665,7 @@
       <div class="order-card" id="order-card-${o.id}">
         <div class="order-card-bar ${s.bar}"></div>
         <div class="order-card-inner">
-          <div class="order-emoji"><img src="${o.image || '../assets/istockphoto-2249457023-612x612.webp'}" alt="${o.productName}" loading="lazy" onerror="this.onerror=null; this.src='../assets/istockphoto-2249457023-612x612.webp';" /></div>
+          <div class="order-emoji"><img src="${o.image || "../assets/istockphoto-2249457023-612x612.webp"}" alt="${o.productName}" loading="lazy" onerror="this.onerror=null; this.src='../assets/istockphoto-2249457023-612x612.webp';" /></div>
           <div class="order-info">
             <div class="order-name">${o.productName}</div>
             <div class="order-sub">Qty: ${o.qty} · Seller: ${o.seller} · ${timeAgo(o.orderedAt)}</div>
@@ -2765,7 +2787,9 @@
         }
 
         const products = loadProducts();
-        const imageUrl = EMOJI_IMAGE_MAP[selectedEmoji] || "../assets/istockphoto-2249457023-612x612.webp";
+        const imageUrl =
+          EMOJI_IMAGE_MAP[selectedEmoji] ||
+          "../assets/istockphoto-2249457023-612x612.webp";
         products.unshift({
           id: uid(),
           name,

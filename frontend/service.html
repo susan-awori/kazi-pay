@@ -55,6 +55,24 @@
         min-height: 100vh;
         font-size: 15px;
         line-height: 1.6;
+        display: flex;
+        flex-direction: column;
+      }
+
+      main {
+        flex: 1;
+      }
+
+      .site-footer,
+      .copyright-footer {
+        width: 100%;
+        text-align: center;
+        padding: 14px 18px;
+        margin-top: 24px;
+        background: var(--white);
+        color: var(--grey-400);
+        border-top: 1px solid var(--grey-200);
+        font-size: 13px;
       }
 
       /* ── Nav ── */
@@ -373,6 +391,18 @@
         max-width: 1200px;
         margin: 0 auto;
         padding: 32px 24px 60px;
+      }
+
+      .site-footer,
+      .copyright-footer {
+        width: 100%;
+        text-align: center;
+        padding: 14px 18px;
+        margin-top: 24px;
+        background-color: #002a00;
+        color: #ececea;
+        border-top: 1px solid #eee;
+        font-size: 13px;
       }
 
       /* Results meta row */
@@ -800,6 +830,10 @@
         <!-- Rendered by JS -->
       </div>
     </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2026 Kazi Pay. All rights reserved.</p>
+    </footer>
 
     <!-- ── TOAST ── -->
     <div id="toast">✅ <span id="toast-msg">Done</span></div>
