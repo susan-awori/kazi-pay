@@ -82,6 +82,21 @@ A web‑based escrow system using M‑Pesa STK Push and B2C. Clients deposit fun
 ![KaziPay Worker](https://raw.githubusercontent.com/susan-awori/kazi-pay/refs/heads/main/screenshots/kazi%20pay%20worker/WhatsApp%20Image%202026-03-29%20at%2010.54.03%20AM.jpeg)
 
 - **Responsive Web Interface** – Built with React 18 and Tailwind CSS, works on desktop and mobile.
+![Screenshot_20260329_230427_Chrome](https://github.com/user-attachments/assets/8c6997bf-7a1e-425a-b68a-905181497aa6)
+  
+![Screenshot_20260329_230054_Chrome](https://github.com/user-attachments/assets/86534041-4294-43dc-a49f-16a3785d5c98)
+
+![Screenshot_20260329_230529_Chrome](https://github.com/user-attachments/assets/26c53087-4ad0-4dfb-bedc-2aef2f3ee9cb)
+
+![Screenshot_20260329_230543_Chrome](https://github.com/user-attachments/assets/65238234-5e2f-47e1-8553-98ef7aa252a1)
+
+![Screenshot_20260329_230039_Chrome](https://github.com/user-attachments/assets/6ff4e6bb-31f1-4be6-9cd9-aeb718d86f0c)
+
+![Screenshot_20260329_230048_Chrome](https://github.com/user-attachments/assets/e6d904fb-180d-46c9-a3fd-e46b7352cb38)
+
+![Screenshot_20260329_230559_Chrome](https://github.com/user-attachments/assets/515ee5fc-ab21-4578-8018-595adb250356)
+
+
 
 ---
 
