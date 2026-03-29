@@ -254,7 +254,8 @@ function AuthModal({ defaultTab = "login", onClose, onAuth }) {
     username: "",
     email: "",
     phone_number: "",
-    password: "",
+    password1: "",
+    password2: "",
     role: "client",
     national_id: "",
   });
@@ -416,8 +417,18 @@ function AuthModal({ defaultTab = "login", onClose, onAuth }) {
                 <label className="mb-1.5 block text-sm font-medium text-[var(--ink)]">Password</label>
                 <input
                   type="password"
-                  value={regForm.password}
-                  onChange={(e) => setRegForm({ ...regForm, password: e.target.value })}
+                  value={regForm.password1}
+                  onChange={(e) => setRegForm({ ...regForm, password1: e.target.value })}
+                  required
+                  className="w-full rounded-lg border border-gray-200 px-4 py-2.5 text-sm outline-none focus:border-[var(--emerald)]"
+                />
+              </div>
+              <div>
+                <label className="mb-1.5 block text-sm font-medium text-[var(--ink)]">Confirm Password</label>
+                <input
+                  type="password"
+                  value={regForm.password2}
+                  onChange={(e) => setRegForm({ ...regForm, password2: e.target.value })}
                   required
                   className="w-full rounded-lg border border-gray-200 px-4 py-2.5 text-sm outline-none focus:border-[var(--emerald)]"
                 />
