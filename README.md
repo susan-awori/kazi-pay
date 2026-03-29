@@ -74,30 +74,103 @@ Authentication & Roles
 ##  **Project Structure**
 ```text
 kazipay/
-├── backend/                 # Django project
-│   ├── Kazi_Pay/            # Project settings
-│   │   ├── __init__.py
-│   │   ├── settings.py
+├── backend-app/             # Django Modular Backend
+│
+│   ├── adminApp/            # Platform Oversight & Disputes
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── base_tests.py
+│   │   ├── models.py
+│   │   ├── serializers.py
+│   │   ├── services.py
+│   │   ├── tests.py
 │   │   ├── urls.py
-│   │   └── wsgi.py
-│   ├── kazipay_app/         # Main app
-│   │   ├── migrations/
-│   │   ├── management/
-│   │   │   └── commands/
-│   │   │       └── auto_release.py   # Auto‑release cron
-│   │   ├── __init__.py
+│   │   ├── views.py
+│   │   └── __init__.py
+│
+│   ├── authApp/             # User Auth, Profiles & Signals
+│   │   ├── adapters.py
 │   │   ├── admin.py
 │   │   ├── apps.py
 │   │   ├── models.py
 │   │   ├── serializers.py
+│   │   ├── signals.py
+│   │   ├── tests.py
+│   │   ├── urls.py
+│   │   ├── utils.py
+│   │   ├── views.py
+│   │   └── __init__.py
+│
+│   ├── backend/             # Core Project Settings
+│   │   ├── asgi.py
+│   │   ├── settings.py
+│   │   ├── urls.py
+│   │   ├── wsgi.py
+│   │   └── __init__.py
+│
+│   ├── clients/             # Client-side Job Management
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── models.py
+│   │   ├── serializers.py
+│   │   ├── services.py
 │   │   ├── urls.py
 │   │   ├── views.py
-│   │   └── utils/
-│   │       ├── mpesa.py
-│   │       └── sms.py
-│   ├── requirements.txt
-│   ├── .env.example
-│   └── manage.py
+│   │   └── __init__.py
+│
+│   ├── escrow/              # M-Pesa C2B & Transaction Logic
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── models.py
+│   │   ├── mpesa.py
+│   │   ├── serializers.py
+│   │   ├── services.py
+│   │   ├── signals.py
+│   │   ├── urls.py
+│   │   ├── views.py
+│   │   └── __init__.py
+│
+│   ├── notification/        # USSD & SMS - Africa's Talking
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── models.py
+│   │   ├── serializers.py
+│   │   ├── services.py
+│   │   ├── urls.py
+│   │   ├── utils.py
+│   │   ├── views.py
+│   │   └── __init__.py
+│
+│   ├── wallet/              # Financial Records & M-Pesa B2C
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── models.py
+│   │   ├── mpesa.py
+│   │   ├── serializers.py
+│   │   ├── services.py
+│   │   ├── urls.py
+│   │   ├── views.py
+│   │   └── __init__.py
+│
+│   ├── workers/             # Worker Profiles & Bidding
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── models.py
+│   │   ├── serializers.py
+│   │   ├── services.py
+│   │   ├── urls.py
+│   │   ├── views.py
+│   │   └── __init__.py
+│
+│   ├── templates/           # Server-rendered HTML (Tailwind UI)
+│   │   ├── base.html
+│   │   ├── login.html
+│   │   └── dashboard.html
+│
+│   ├── manage.py            # Django CLI tool
+│   ├── requirements.txt     # Python package list
+│   └── .env                 # Environment variables (Safaricom & AT Keys)
+│
 ├── frontend-app/            # React + Vite landing app
 │   ├── src/
 │   │   ├── App.jsx
@@ -108,10 +181,35 @@ kazipay/
 │   ├── postcss.config.js
 │   ├── tailwind.config.js
 │   └── vite.config.js
+│
+├── frontend/                # Static HTML/CSS/JS dashboard
+│   ├── dashboard.css
+│   ├── dashboard.html
+│   ├── index.html
+│   ├── job-details.html
+│   ├── market.html
+│   ├── payment.html
+│   ├── postjob.html
+│   ├── script.js
+│   ├── service.html
+│   └── style.css
+│
+├── assets/                  # Shared images & media
+│   ├── istockphoto-2198966728-612x612.jpg
+│   ├── istockphoto-2249457023-612x612.webp
+│   ├── photo-1502920917128-1aa500764cbd.avif
+│   ├── photo-1609250291996-fdebe6020a8f.avif
+│   ├── photo-1627405016867-4d59bd6b4747.avif
+│   ├── photo-1631464572173-597f6db2f18a.avif
+│   ├── photo-1656944227421-416b1d2186c9.avif
+│   ├── premium_photo-1667251760504-096946b820af.avif
+│   └── premium_photo-1679513691474-73102089c117.avif
+│
 ├── screenshots/             # (optional) for README
 ├── .gitignore
 ├── LICENSE
 └── README.md
+
 ```
 ##  Status
 
