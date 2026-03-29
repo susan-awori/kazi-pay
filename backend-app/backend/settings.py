@@ -12,7 +12,10 @@ SECRET_KEY = config("SECRET_KEY", default="your_secret_key_here")
 DEBUG = config("DEBUG", default=True, cast=bool)
 
 # FIX: Added .ngrok-free.app so Africa's Talking can connect to your local server
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", ".ngrok-free.app", "cordie-unladen-lena.ngrok-free.dev"]
+ALLOWED_HOSTS = config(
+    "ALLOWED_HOSTS",
+    default="localhost,127.0.0.1,.ngrok-free.app"
+).split(",")
 
 # --- APPLICATION DEFINITION ---
 DJANGO_APPS = [
@@ -130,7 +133,11 @@ REST_AUTH = {
     'REGISTER_SERIALIZER': 'authApp.serializers.CustomRegisterSerializer',
 }
 
-CORS_ALLOW_ALL_ORIGINS = True 
+CORS_ALLOWED_ORIGINS = config(
+    "CORS_ALLOWED_ORIGINS",
+    default="http://localhost:5173,http://localhost:3000"
+).split(",")
+CORS_ALLOW_ALL_ORIGINS = config("CORS_ALLOW_ALL_ORIGINS", default=False, cast=bool)
 
 # --- PASSWORD VALIDATION ---
 AUTH_PASSWORD_VALIDATORS = [
